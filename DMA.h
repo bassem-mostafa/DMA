@@ -98,6 +98,24 @@ extern "C"
         DMA_Status_Timeout,         ///< Timeout
     } DMA_Status_t;
 
+    // TODO Make use of the DMA channel type
+    /**
+     *  @brief DMA Channel Type
+     *
+     *  @enum DMA_Channel_t
+     */
+    typedef enum DMA_Channel
+    {
+        DMA_Channel_Unknown = 0, ///< Unknown
+        DMA_Channel_1,           ///< Channel 1 (Minimum)
+        DMA_Channel_2,           ///<
+        DMA_Channel_3,           ///<
+        DMA_Channel_4,           ///<
+        DMA_Channel_5,           ///<
+        DMA_Channel_6,           ///<
+        DMA_Channel_7,           ///< Channel 7 (Maximum)
+    } DMA_Channel_t;
+
     // #############################################################################
     // #### Public Method(s) #######################################################
     // #############################################################################
