@@ -114,8 +114,6 @@ extern "C"
     DMA_Status_t DMA_Instance_Cycle( DMA_Instance_t * Instance );
     DMA_Status_t DMA_Instance_DeInitialize( DMA_Instance_t * Instance );
 
-    // TODO Add More APIs
-
     // #############################################################################
     // #### Public Variable(s) #####################################################
     // #############################################################################
