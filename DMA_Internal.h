@@ -88,31 +88,32 @@ extern "C"
     // #### Public Type(s) #########################################################
     // #############################################################################
 
-    typedef struct DMA_InstanceContext_t DMA_InstanceContext_t;
+    typedef enum DMA_Type
+    {
+        DMA_Type_Unknown = 0,
+        DMA_Type_Null,
+        DMA_Type_STM32L496VGT6P,
+    } DMA_Type_t;
 
     typedef struct DMA_Instance
     {
-        DMA_t DMAx;
+        DMA_Type_t Type;
 
         union
         {
-            DMA_InstanceContext_t * Context;
-            DMA_STM32L496VGT6P_Instance_t * STM32L496VGT6P;
+            DMA_STM32L496VGT6P_t STM32L496VGT6Px;
         };
+
     } DMA_Instance_t;
 
     // #############################################################################
     // #### Public Method(s) #######################################################
     // #############################################################################
 
-    DMA_Status_t DMA_GetInstance( DMA_t DMAx, DMA_Instance_t ** Instance );
-
     // The following APIs MUST be provided by the port
-    DMA_Status_t DMA_IsValid( DMA_t DMAx );
-
-    DMA_Status_t DMA_Instance_Initialize( DMA_Instance_t * Instance );
-    DMA_Status_t DMA_Instance_Cycle( DMA_Instance_t * Instance );
-    DMA_Status_t DMA_Instance_DeInitialize( DMA_Instance_t * Instance );
+    DMA_Status_t DMA_Port_Initialize( DMA_t DMAx );
+    DMA_Status_t DMA_Port_Cycle( DMA_t DMAx );
+    DMA_Status_t DMA_Port_DeInitialize( DMA_t DMAx );
 
     // #############################################################################
     // #### Public Variable(s) #####################################################
