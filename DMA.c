@@ -78,20 +78,14 @@
 DMA_Status_t DMA_Initialize( DMA_t DMAx )
 {
     DMA_Status_t Status = DMA_Status_Success;
-    DMA_Status_t DMA_Status = DMA_Status_Success;
 
     do
     {
         DMA_Trace( "%s( DMAx=%d )", __FUNCTION__, DMAx );
 
-        DMA_t DMA_start = ( DMAx == DMA_All ? DMA_Null : DMAx );
-        DMA_t DMA_end = ( DMAx == DMA_All ? DMA_Count : DMAx + 1 );
-        for ( DMA_t DMA_x = DMA_start; DMA_x < DMA_end; ++DMA_x )
+        if ( ( Status = DMA_Port_Initialize( DMAx ) ) != DMA_Status_Success )
         {
-            if ( ( DMA_Status = DMA_Port_Initialize( DMA_x ) ) != DMA_Status_Success )
-            {
-                Status = DMA_Status;
-            }
+            break;
         }
     }
     while ( 0 );
@@ -102,20 +96,14 @@ DMA_Status_t DMA_Initialize( DMA_t DMAx )
 DMA_Status_t DMA_Cycle( DMA_t DMAx )
 {
     DMA_Status_t Status = DMA_Status_Success;
-    DMA_Status_t DMA_Status = DMA_Status_Success;
 
     do
     {
         DMA_Trace( "%s( DMAx=%d )", __FUNCTION__, DMAx );
 
-        DMA_t DMA_start = ( DMAx == DMA_All ? DMA_Null : DMAx );
-        DMA_t DMA_end = ( DMAx == DMA_All ? DMA_Count : DMAx + 1 );
-        for ( DMA_t DMA_x = DMA_start; DMA_x < DMA_end; ++DMA_x )
+        if ( ( Status = DMA_Port_Cycle( DMAx ) ) != DMA_Status_Success )
         {
-            if ( ( DMA_Status = DMA_Port_Cycle( DMA_x ) ) != DMA_Status_Success )
-            {
-                Status = DMA_Status;
-            }
+            break;
         }
     }
     while ( 0 );
@@ -126,20 +114,14 @@ DMA_Status_t DMA_Cycle( DMA_t DMAx )
 DMA_Status_t DMA_DeInitialize( DMA_t DMAx )
 {
     DMA_Status_t Status = DMA_Status_Success;
-    DMA_Status_t DMA_Status = DMA_Status_Success;
 
     do
     {
         DMA_Trace( "%s( DMAx=%d )", __FUNCTION__, DMAx );
 
-        DMA_t DMA_start = ( DMAx == DMA_All ? DMA_Null : DMAx );
-        DMA_t DMA_end = ( DMAx == DMA_All ? DMA_Count : DMAx + 1 );
-        for ( DMA_t DMA_x = DMA_start; DMA_x < DMA_end; ++DMA_x )
+        if ( ( Status = DMA_Port_DeInitialize( DMAx ) ) != DMA_Status_Success )
         {
-            if ( ( DMA_Status = DMA_Port_DeInitialize( DMA_x ) ) != DMA_Status_Success )
-            {
-                Status = DMA_Status;
-            }
+            break;
         }
     }
     while ( 0 );
@@ -151,7 +133,7 @@ DMA_Status_t DMA_DeInitialize( DMA_t DMAx )
 // #### Public Variable(s) #####################################################
 // #############################################################################
 
-const char DMA_VERSION[] = "0.0.0.v20260818-0345";
+const char DMA_VERSION[] = "0.0.0.v20260913-1832";
 
 // #############################################################################
 // #### File Guard #############################################################
